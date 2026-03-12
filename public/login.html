@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login — Dev4all</title>
+  <link rel="stylesheet" href="/css/global.css" />
+  <link rel="stylesheet" href="/css/components.css" />
+  <link rel="stylesheet" href="/css/auth.css" />
+</head>
+<body>
+
+  <!-- ── NAVBAR ─────────────────────────────────────────────────────── -->
+  <nav class="navbar" id="navbar">
+    <div class="navbar__inner">
+      <a href="/" class="navbar__logo">
+        <div class="navbar__logo-icon">D4</div>
+        Dev<span>4all</span>
+      </a>
+      <ul class="navbar__links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/#nossos-trabalhos">Portfolio</a></li>
+        <li><a href="/#sobre-o-projeto">Sobre nós</a></li>
+        <li><a href="/orcamento.html">Contate-nos</a></li>
+      </ul>
+      <div class="navbar__actions">
+        <a href="/registro.html" class="btn btn-outline btn-sm">Registrar</a>
+        <a href="#form" class="btn btn-primary btn-sm">Login</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ── HERO DA PÁGINA ────────────────────────────────────────────── -->
+  <section class="auth-hero">
+    <div class="container">
+      <div class="auth-hero__inner">
+        <h1>Acesse sua <span class="text-accent">conta</span></h1>
+        <p>Acompanhe seus orçamentos e projetos em andamento.</p>
+        <div class="auth-hero__btns">
+          <a href="/registro.html" class="btn btn-outline btn-lg">Criar conta grátis</a>
+          <a href="#form"          class="btn btn-primary btn-lg">Fazer login</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SEÇÃO DO FORMULÁRIO ──────────────────────────────────────── -->
+  <section class="auth-form-section" id="form">
+    <div class="container">
+      <div class="auth-two-col">
+
+        <!-- Coluna esquerda: informações -->
+        <div class="auth-info">
+          <div class="auth-info__tag">Área do cliente</div>
+          <h2>Bem-vindo de volta!</h2>
+          <p>Entre com suas credenciais para acessar o painel e acompanhar seus projetos.</p>
+          <ul class="auth-info__list">
+            <li>
+              <span class="auth-info__icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="15" y2="16"/></svg>
+              </span>
+              Acompanhe seus orçamentos
+            </li>
+            <li>
+              <span class="auth-info__icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+              </span>
+              Receba atualizações de status
+            </li>
+            <li>
+              <span class="auth-info__icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="m3 21 1.9-5.7a8.5 8.5 0 1 1 3.8 3.8z"/></svg>
+              </span>
+              Fale direto com a equipe
+            </li>
+          </ul>
+          <p class="auth-info__link">
+            Não tem conta? <a href="/registro.html">Crie uma agora &rarr;</a>
+          </p>
+        </div>
+
+        <!-- Coluna direita: formulário -->
+        <div class="auth-form-card">
+          <h3>Entrar na conta</h3>
+          <div class="alert" id="alert"></div>
+
+          <form id="loginForm" novalidate>
+            <div class="form-group">
+              <label class="form-label" for="email">E-mail</label>
+              <input class="form-control" type="email" id="email" placeholder="seu@email.com" autocomplete="email" required />
+              <span class="form-error" id="emailError"></span>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="senha">
+                Senha
+                <a href="#" style="float:right;color:var(--accent);font-weight:400">Esqueci</a>
+              </label>
+              <div class="input-with-icon">
+                <input class="form-control" type="password" id="senha" placeholder="Mínimo 8 caracteres" autocomplete="current-password" required />
+                <button type="button" class="input-eye" id="toggleSenha" aria-label="Ver senha">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                </button>
+              </div>
+              <span class="form-error" id="senhaError"></span>
+            </div>
+
+            <div class="auth-form-actions">
+              <a href="/registro.html" class="btn btn-outline btn-block">Registrar</a>
+              <button type="submit" class="btn btn-primary btn-block" id="submitBtn">Login</button>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER mínimo -->
+  <footer style="background:var(--gray-900);color:var(--gray-500);padding:var(--space-8) 0;text-align:center;font-size:var(--font-sm)">
+    <div class="footer__logo" style="margin-bottom:var(--space-2)">Dev<span style="color:var(--accent)">4all</span></div>
+    &copy; 2026 Dev4all. Todos os direitos reservados.
+  </footer>
+
+  <script type="module" src="/js/auth.js"></script>
+</body>
+</html>

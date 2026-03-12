@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Painel — Dev4all</title>
+  <link rel="stylesheet" href="/css/global.css" />
+  <link rel="stylesheet" href="/css/components.css" />
+  <link rel="stylesheet" href="/css/painel.css" />
+</head>
+<body class="painel-body">
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="navbar__inner">
+      <a href="/" class="navbar__logo">
+        <div class="navbar__logo-icon">D4</div>
+        Dev<span>4all</span>
+      </a>
+      <ul class="navbar__links" id="navLinks">
+        <li><a href="/">Home</a></li>
+        <li><a href="/#nossos-trabalhos">Portfolio</a></li>
+        <li><a href="/orcamento.html">Orçamento</a></li>
+      </ul>
+      <div class="navbar__actions">
+        <div class="user-chip" id="userChip">
+          <div class="user-chip__avatar" id="userAvatar">U</div>
+          <span id="userName">Carregando...</span>
+        </div>
+        <button class="btn btn-ghost btn-sm" id="btnLogout">Sair</button>
+      </div>
+      <button class="navbar__toggle" id="navToggle"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <div class="painel-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="painel-sidebar" id="painelSidebar">
+      <div class="painel-sidebar__profile">
+        <div class="painel-sidebar__avatar" id="sidebarAvatar">U</div>
+        <div>
+          <div class="painel-sidebar__name" id="sidebarName">—</div>
+          <div class="painel-sidebar__role" id="sidebarRole">—</div>
+        </div>
+      </div>
+
+      <nav class="painel-nav">
+        <a href="#" class="painel-nav__item active" data-tab="orcamentos">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="15" y2="16"/></svg>
+          Meus Orçamentos
+        </a>
+        <a href="#" class="painel-nav__item" data-tab="perfil">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          Meu Perfil
+        </a>
+        <!-- Itens só para admin -->
+        <div class="painel-nav__divider" id="adminDivider" style="display:none">
+          <span>Administração</span>
+        </div>
+        <a href="#" class="painel-nav__item painel-nav__item--admin" data-tab="admin-orcamentos" id="navAdminOrc" style="display:none">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          Todos os Orçamentos
+        </a>
+        <a href="#" class="painel-nav__item painel-nav__item--admin" data-tab="admin-projetos" id="navAdminProj" style="display:none">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="m6 14 1.45-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.55 6a2 2 0 0 1-1.94 1.5H4a2 2 0 0 1-2-2V5c0-1.1.9-2 2-2h3.93a2 2 0 0 1 1.66.9l.82 1.2a2 2 0 0 0 1.66.9H18a2 2 0 0 1 2 2v2"/></svg>
+          Projetos
+        </a>
+        <a href="#" class="painel-nav__item painel-nav__item--admin" data-tab="admin-equipe" id="navAdminEquipe" style="display:none">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          Equipe
+        </a>
+      </nav>
+
+      <a href="/orcamento.html" class="btn btn-primary btn-sm" style="margin-top:auto">
+        + Novo Orçamento
+      </a>
+    </aside>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="painel-main">
+
+      <!-- ── TAB: Meus Orçamentos ────────────────────────────────── -->
+      <section id="tab-orcamentos" class="painel-tab active">
+        <div class="painel-header">
+          <div>
+            <h1>Meus Orçamentos</h1>
+            <p>Acompanhe o status das suas solicitações</p>
+          </div>
+          <a href="/orcamento.html" class="btn btn-primary btn-sm">+ Novo Orçamento</a>
+        </div>
+
+        <div class="alert" id="alertOrc"></div>
+
+        <div class="table-wrapper" id="myQuotesTable">
+          <table>
+            <thead>
+              <tr>
+                <th>Tipo de Serviço</th>
+                <th>Status</th>
+                <th>Data</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody id="myQuotesTbody">
+              <tr>
+                <td colspan="4">
+                  <div class="empty-state">
+                    <div class="skeleton" style="height:16px;width:60%;margin:0 auto 8px"></div>
+                    <div class="skeleton" style="height:16px;width:40%;margin:0 auto"></div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ── TAB: Meu Perfil ────────────────────────────────────── -->
+      <section id="tab-perfil" class="painel-tab">
+        <div class="painel-header">
+          <div>
+            <h1>Meu Perfil</h1>
+            <p>Gerencie suas informações pessoais</p>
+          </div>
+        </div>
+
+        <div class="painel-card">
+          <div class="perfil-info">
+            <div class="perfil-avatar" id="perfilAvatar">U</div>
+            <div>
+              <h2 id="perfilNome">—</h2>
+              <p id="perfilEmail" style="color:var(--gray-500)">—</p>
+              <span class="badge" id="perfilRole">user</span>
+            </div>
+          </div>
+
+          <div class="perfil-stats">
+            <div class="perfil-stat">
+              <strong id="totalOrcamentos">0</strong>
+              <span>Orçamentos enviados</span>
+            </div>
+            <div class="perfil-stat">
+              <strong id="orcamentosAprovados">0</strong>
+              <span>Aprovados</span>
+            </div>
+            <div class="perfil-stat">
+              <strong id="orcamentosPendentes">0</strong>
+              <span>Em análise</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── TAB: Admin — Todos os Orçamentos ───────────────────── -->
+      <section id="tab-admin-orcamentos" class="painel-tab">
+        <div class="painel-header">
+          <div>
+            <h1>Todos os Orçamentos</h1>
+            <p>Gerencie todas as solicitações de clientes</p>
+          </div>
+          <div class="flex gap-2">
+            <select class="form-control" id="filterStatus" style="width:180px">
+              <option value="">Todos os status</option>
+              <option value="pendente">Pendente</option>
+              <option value="em_analise">Em Análise</option>
+              <option value="aprovado">Aprovado</option>
+              <option value="rejeitado">Rejeitado</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Cliente</th>
+                <th>Serviço</th>
+                <th>Status</th>
+                <th>Data</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody id="adminQuotesTbody">
+              <tr><td colspan="5" class="text-center text-muted">Carregando...</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="pagination" id="adminQuotesPagination"></div>
+      </section>
+
+      <!-- ── TAB: Admin — Projetos ──────────────────────────────── -->
+      <section id="tab-admin-projetos" class="painel-tab">
+        <div class="painel-header">
+          <div>
+            <h1>Projetos</h1>
+            <p>Gerencie os projetos do portfolio</p>
+          </div>
+          <button class="btn btn-primary btn-sm" id="btnNewProject">+ Novo Projeto</button>
+        </div>
+
+        <div class="grid-3" id="adminProjectsGrid">
+          <p class="text-muted">Carregando...</p>
+        </div>
+      </section>
+
+      <!-- ── TAB: Admin — Equipe ────────────────────────────────── -->
+      <section id="tab-admin-equipe" class="painel-tab">
+        <div class="painel-header">
+          <div>
+            <h1>Equipe</h1>
+            <p>Gerencie os membros da equipe</p>
+          </div>
+          <button class="btn btn-primary btn-sm" id="btnNewMember">+ Novo Membro</button>
+        </div>
+
+        <div class="grid-4" id="adminTeamGrid">
+          <p class="text-muted">Carregando...</p>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- ── MODAL: Detalhes do Orçamento ─────────────────────────────── -->
+  <div class="modal-overlay" id="quoteModal">
+    <div class="modal">
+      <button class="modal__close" id="closeModal">&times;</button>
+      <h2 style="margin-bottom:var(--space-6)" id="modalTitle">Orçamento</h2>
+      <div id="modalContent"></div>
+    </div>
+  </div>
+
+  <!-- ── MODAL: Projeto ─────────────────────────────────────────────── -->
+  <div class="modal-overlay" id="projectModal">
+    <div class="modal" style="max-width:560px">
+      <button class="modal__close" id="closeProjectModal">&times;</button>
+      <h2 style="margin-bottom:var(--space-6)" id="projectModalTitle">Projeto</h2>
+      <div id="projectModalContent">
+        <form id="projectForm">
+          <div class="form-group">
+            <label class="form-label">Título *</label>
+            <input class="form-control" id="pTitulo" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Descrição *</label>
+            <textarea class="form-control" id="pDescricao" rows="3" required></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Categorias (separadas por vírgula)</label>
+            <input class="form-control" id="pCategorias" placeholder="Desenvolvimento, Design" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">URL da imagem</label>
+            <input class="form-control" id="pImagemUrl" type="url" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Link do projeto</label>
+            <input class="form-control" id="pLinkExterno" type="url" />
+          </div>
+          <div class="form-group">
+            <label class="form-check">
+              <input type="checkbox" id="pDestaque" /> <span>Exibir em destaque na home</span>
+            </label>
+          </div>
+          <div class="flex gap-4" style="justify-content:flex-end;margin-top:var(--space-6)">
+            <button type="button" class="btn btn-ghost" id="cancelProjectBtn">Cancelar</button>
+            <button type="submit" class="btn btn-primary" id="saveProjectBtn">Salvar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── MODAL: Membro da Equipe ───────────────────────────────────── -->
+  <div class="modal-overlay" id="memberModal">
+    <div class="modal" style="max-width:520px">
+      <button class="modal__close" id="closeMemberModal">&times;</button>
+      <h2 style="margin-bottom:var(--space-6)" id="memberModalTitle">Membro da Equipe</h2>
+      <form id="memberForm">
+        <div class="form-group">
+          <label class="form-label">Nome completo *</label>
+          <input class="form-control" id="mNome" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Cargo *</label>
+          <input class="form-control" id="mCargo" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Bio</label>
+          <textarea class="form-control" id="mBio" rows="3"></textarea>
+        </div>
+        <div class="grid-2">
+          <div class="form-group">
+            <label class="form-label">LinkedIn URL</label>
+            <input class="form-control" id="mLinkedin" type="url" placeholder="https://linkedin.com/in/..." />
+          </div>
+          <div class="form-group">
+            <label class="form-label">GitHub URL</label>
+            <input class="form-control" id="mGithub" type="url" placeholder="https://github.com/..." />
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Foto URL</label>
+          <input class="form-control" id="mFoto" type="url" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Ordem de exibição</label>
+          <input class="form-control" id="mOrdem" type="number" min="1" value="1" />
+        </div>
+        <div class="flex gap-4" style="justify-content:flex-end;margin-top:var(--space-6)">
+          <button type="button" class="btn btn-ghost" id="cancelMemberBtn">Cancelar</button>
+          <button type="submit" class="btn btn-primary" id="saveMemberBtn">Salvar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script type="module" src="/js/painel.js"></script>
+</body>
+</html>
