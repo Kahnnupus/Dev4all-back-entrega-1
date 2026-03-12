@@ -1,5 +1,4 @@
-// seed.js — popula o banco com dados iniciais
-// uso: npm run seed
+
 import 'dotenv/config';
 import mongoose from 'mongoose';
 import connectDB from '../config/db.js';

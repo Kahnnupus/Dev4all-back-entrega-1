@@ -29,7 +29,7 @@ export const protectRoute = async (req, res, next) => {
   }
 };
 
-// JWT opcional: popula req.user se o token for válido, senão segue sem erro
+
 export const optionalAuth = async (req, res, next) => {
   try {
     const authHeader = req.headers.authorization;

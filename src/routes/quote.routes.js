@@ -9,7 +9,7 @@ import { createQuoteSchema, updateStatusSchema } from '../validators/quoteValida
 
 const router = Router();
 
-// Rota "my" DEVE vir antes de "/:id" para não ser tratada como ID
+
 router.get('/my', protectRoute, getMyQuotes);
 
 router.post('/', optionalAuth, validate(createQuoteSchema), createQuote);

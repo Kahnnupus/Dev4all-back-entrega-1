@@ -23,9 +23,9 @@ const projectSchema = new mongoose.Schema(
     },
     imagemUrl: { type: String, default: null },
     linkExterno: { type: String, default: null },
-    // true = aparece nos destaques da home
+
     destaque: { type: Boolean, default: false },
-    // soft delete
+
     ativo: { type: Boolean, default: true },
     criadoPor: {
       type: mongoose.Schema.Types.ObjectId,

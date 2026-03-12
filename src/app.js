@@ -18,7 +18,7 @@ export async function createApp() {
 
   app.use(
     helmet({
-      // permite Apollo Sandbox embutir iframes em dev
+
       contentSecurityPolicy: process.env.NODE_ENV === 'production' ? undefined : false,
     })
   );
@@ -30,7 +30,7 @@ export async function createApp() {
     })
   );
 
-  // limite restrito para login/registro
+
   const authLimiter = rateLimit({
     windowMs: 15 * 60 * 1000,
     max: 10,
@@ -69,7 +69,7 @@ export async function createApp() {
     res.json({ success: true, env: process.env.NODE_ENV });
   });
 
-  // rotas sem /api e /graphql entregam o index.html (SPA)
+
   app.get('*', (req, res, next) => {
     if (req.path.startsWith('/api') || req.path.startsWith('/graphql')) return next();
     res.sendFile(path.join(publicDir, 'index.html'));

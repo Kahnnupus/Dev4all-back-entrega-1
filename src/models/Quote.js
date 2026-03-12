@@ -46,7 +46,7 @@ const quoteSchema = new mongoose.Schema(
       },
       default: 'pendente',
     },
-    // null = enviado sem login
+
     usuario: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User',

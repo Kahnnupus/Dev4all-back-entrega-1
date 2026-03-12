@@ -1,7 +1,7 @@
 import Project from '../models/Project.js';
 import { catchAsync } from '../middlewares/errorHandler.js';
 
-// GET /api/projects
+
 export const getProjects = catchAsync(async (req, res) => {
   const { categoria, destaque, page = 1, limit = 9 } = req.query;
 
@@ -30,7 +30,7 @@ export const getProjects = catchAsync(async (req, res) => {
   });
 });
 
-// GET /api/projects/:id
+
 export const getProject = catchAsync(async (req, res) => {
   const project = await Project.findOne({ _id: req.params.id, ativo: true })
     .populate('criadoPor', 'nomeCompleto email');
@@ -42,7 +42,7 @@ export const getProject = catchAsync(async (req, res) => {
   res.json({ success: true, data: project });
 });
 
-// POST /api/projects (admin)
+
 export const createProject = catchAsync(async (req, res) => {
   const project = await Project.create({ ...req.body, criadoPor: req.user._id });
 
@@ -53,7 +53,7 @@ export const createProject = catchAsync(async (req, res) => {
   });
 });
 
-// PATCH /api/projects/:id (admin)
+
 export const updateProject = catchAsync(async (req, res) => {
   const project = await Project.findByIdAndUpdate(
     req.params.id,
@@ -68,7 +68,7 @@ export const updateProject = catchAsync(async (req, res) => {
   res.json({ success: true, message: 'Projeto atualizado!', data: project });
 });
 
-// DELETE /api/projects/:id (admin - soft delete)
+
 export const deleteProject = catchAsync(async (req, res) => {
   const project = await Project.findByIdAndUpdate(
     req.params.id,

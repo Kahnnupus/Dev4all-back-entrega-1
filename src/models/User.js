@@ -46,7 +46,7 @@ userSchema.virtual('quotes', {
   foreignField: 'usuario',
 });
 
-// faz o hash antes de salvar
+
 userSchema.pre('save', async function () {
   if (!this.isModified('senha')) return;
   this.senha = await bcrypt.hash(this.senha, 12);

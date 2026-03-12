@@ -1,13 +1,13 @@
 import TeamMember from '../models/TeamMember.js';
 import { catchAsync } from '../middlewares/errorHandler.js';
 
-// GET /api/team
+
 export const getTeam = catchAsync(async (req, res) => {
   const members = await TeamMember.find({ ativo: true }).sort({ ordem: 1 });
   res.json({ success: true, data: members });
 });
 
-// GET /api/team/:id
+
 export const getTeamMember = catchAsync(async (req, res) => {
   const member = await TeamMember.findOne({ _id: req.params.id, ativo: true });
 
@@ -18,7 +18,7 @@ export const getTeamMember = catchAsync(async (req, res) => {
   res.json({ success: true, data: member });
 });
 
-// POST /api/team (admin)
+
 export const createTeamMember = catchAsync(async (req, res) => {
   const member = await TeamMember.create(req.body);
 
@@ -29,7 +29,7 @@ export const createTeamMember = catchAsync(async (req, res) => {
   });
 });
 
-// PATCH /api/team/:id (admin)
+
 export const updateTeamMember = catchAsync(async (req, res) => {
   const member = await TeamMember.findByIdAndUpdate(
     req.params.id,
@@ -44,7 +44,7 @@ export const updateTeamMember = catchAsync(async (req, res) => {
   res.json({ success: true, message: 'Membro atualizado!', data: member });
 });
 
-// DELETE /api/team/:id (admin - soft delete)
+
 export const deleteTeamMember = catchAsync(async (req, res) => {
   const member = await TeamMember.findByIdAndUpdate(
     req.params.id,

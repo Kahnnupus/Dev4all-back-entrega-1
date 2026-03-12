@@ -32,7 +32,7 @@ export async function createApolloMiddleware() {
         try {
           user = verifyToken(token);
         } catch {
-          // token inválido ou expirado
+
         }
       }
 

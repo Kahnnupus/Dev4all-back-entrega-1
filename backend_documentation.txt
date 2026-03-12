@@ -1,0 +1,57 @@
+DOCUMENTAÇÃO DO BACKEND DEV4ALL
+
+1. VISÃO GERAL
+Este projeto de backend foi desenvolvido para a agência de desenvolvimento web "Dev4all". Ele apresenta uma abordagem de API dupla, oferecendo tanto rotas RESTful quanto uma API GraphQL. Foi construído para lidar com o gerenciamento de usuários, projetos de portfólio, solicitações de serviços (orçamentos) e perfis de membros da equipe.
+
+2. ARQUITETURA E STACK DE TECNOLOGIA
+- Runtime: Node.js (>= 18.0.0)
+- Framework: Express.js
+- Banco de Dados: MongoDB com Mongoose ORM
+- GraphQL: Apollo Server (@apollo/server)
+- Autenticação: JWT (jsonwebtoken) e bcryptjs para hash de senhas
+- Validação: Joi (em middlewares validadores)
+- Segurança: Helmet, CORS, express-rate-limit
+
+A estrutura da aplicação segue um padrão modular e limpo. Todos os arquivos fonte residem no diretório "src":
+/src
+  /config       - Configurações do banco de dados e ajudantes JWT
+  /controllers  - Controladores com a lógica do REST
+  /graphql      - Definições de tipos e resolvers do GraphQL
+  /middlewares  - Autorização, tratamento de erros, limite de requisições (rate limiting)
+  /models       - Schemas do Mongoose
+  /routes       - Declarações das rotas REST no Express
+  /scripts      - Scripts para popular o banco de dados (seed)
+  /validators   - Schemas de validação Joi
+  app.js        - Configuração da aplicação Express
+  server.js     - Ponto de entrada principal para a execução do servidor
+
+3. MODELOS DE DADOS
+O sistema mantém quatro coleções principais no MongoDB:
+- User: Gerencia administradores e usuários padrão. Faz o hash da senha antes de salvar e usa um método personalizado "senhaCorreta" para comparar senhas. Contém campos como "nomeCompleto", "email", "senha", "role" e "ativo".
+- Project: Representa os trabalhos do portfólio. Ele armazena "titulo", "descricao", "categorias", "imagemUrl", "destaque" (booleano para destaques na página inicial), e rastreia o "User" (usuário) que o criou.
+- Quote: Representa uma solicitação de serviço ou orçamento de um cliente. Define campos como "nomeCompleto", "email", "telefone", "tipoServico", "descricao" e "status" (pendente, em_analise, aprovado, rejeitado).
+- TeamMember: Define funcionários da agência ou membros da equipe, armazenando "nome", "cargo", "bio" e links externos (LinkedIn, GitHub).
+
+4. AUTENTICAÇÃO E SEGURANÇA
+- A autenticação é tratada via JWT. O middleware "protectRoute" verifica o token Bearer no cabeçalho de Authorization. Se for válido, o objeto do usuário autenticado é anexado à requisição (req.user).
+- O middleware "adminOnly" adiciona um controle de acesso baseado em funções (roles), garantindo que apenas usuários "admin" possam modificar ou excluir recursos principais do sistema (como Projetos e Membros da Equipe).
+- O limite global de requisições (rate limiting) atua em todas as rotas da API para evitar abusos, com limites mais rigorosos em rotas de autenticação para deter ataques de força bruta.
+
+5. API REST
+A arquitetura REST mapeia recursos lógicos para roteadores do Express:
+- Roteador Auth (/api/auth): Lida com o registro de usuários, login e busca de perfil. Utiliza o "authController" que delega ao modelo User.
+- Roteador Projects (/api/projects): Expõe operações CRUD. Endpoints públicos listam projetos e buscam por ID. Endpoints de admin permitem a criação, modificação e soft-deletion (alternando a flag "ativo") dos projetos.
+- Roteador Quotes (/api/quotes): Permite que qualquer pessoa envie um novo orçamento. Os administradores têm acesso para listar todos os orçamentos e atualizar os status.
+- Roteador Team (/api/team): Lista membros ativos da equipe publicamente e restringe as rotas de modificação aos administradores.
+
+6. API GRAPHQL
+Integrada utilizando o "expressMiddleware" do Apollo Server, a camada GraphQL é montada na rota "/graphql". 
+- TypeDefs ditam a forma do schema, espelhando os modelos de dados REST (User, Project, Quote, TeamMember).
+- Resolvers traduzem as consultas e mutações em chamadas ao banco de dados.
+- O parâmetro context extrai o JWT dos cabeçalhos e atribui o "user" resolvido ao contexto do GraphQL, garantindo que as mutações possam realizar as mesmas verificações de autorização que as rotas REST.
+
+7. TRATAMENTO DE ERROS
+Todos os controladores são envolvidos em um utilitário "catchAsync" que passa as exceções diretamente para a função next() do Express. O middleware global "errorHandler" captura esses erros, categorizando validações, violações de restrição do banco de dados e erros padrão, retornando uma resposta JSON estruturada em vez de travar o servidor.
+
+8. INICIALIZAÇÃO
+O "server.js" chama uma rotina de inicialização (bootstrap) que primeiro se conectada ao MongoDB usando a configuração do Mongoose, depois inicializa a aplicação Express importada do "app.js". Essa configuração permite que os testes de integração sejam facilitados, pois a instância da aplicação fica desacoplada do processo de escuta da rede.

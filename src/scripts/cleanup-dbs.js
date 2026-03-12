@@ -1,6 +1,4 @@
-// cleanup-dbs.js — remove databases de amostra do MongoDB Atlas
-// mantém apenas: dev4all, admin, local, config
-// uso: node src/scripts/cleanup-dbs.js
+
 import 'dotenv/config';
 import { MongoClient } from 'mongodb';
 

@@ -2,7 +2,7 @@ export const errorHandler = (err, req, res, next) => {
   let status = err.status || err.statusCode || 500;
   let message = err.message || 'Erro interno do servidor';
 
-  // chave duplicada no MongoDB (ex: email já cadastrado)
+
   if (err.code === 11000) {
     status = 409;
     const field = Object.keys(err.keyValue || {})[0] || 'campo';
