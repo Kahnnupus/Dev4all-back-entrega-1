@@ -1,84 +1,217 @@
-# Dev4all - Projeto Backend
+# Dev4all - API Backend (REST & GraphQL)
 
-## Descrição
+Bem-vindo ao repositório do backend da **Dev4all**, uma agência de desenvolvimento web. Este projeto foi construído para fornecer uma infraestrutura robusta e escalável, suportando tanto uma API RESTful tradicional quanto uma interface GraphQL moderna.
 
-Dev4all é o projeto de backend para uma agência de desenvolvimento web. O aplicativo fornece uma API RESTful e um endpoint GraphQL para gerenciar usuários, projetos, orçamentos (solicitações de serviços) e membros da equipe.
+O sistema gerencia usuários, projetos de portfólio, solicitações de orçamentos e informações dos membros da equipe.
 
-O sistema utiliza Node.js com Express, MongoDB com Mongoose para persistência de dados, Apollo Server para integração com GraphQL, e JWT para autenticação.
+---
 
-## Membros da Equipe
+## 🚀 Tecnologias Utilizadas
 
-A equipe de desenvolvimento deste projeto é composta pelos seguintes membros:
-- Felipe Albino
-- Reuel Vinicius
-- nathan feitoza
-- Marcos
-- Murilo lacerda
+Este projeto utiliza o que há de mais moderno no ecossistema Node.js:
 
-## Tecnologias Utilizadas
+- **Runtime**: [Node.js](https://nodejs.org/) (versão >= 18.0.0)
+- **Framework**: [Express.js](https://expressjs.com/)
+- **Banco de Dados**: [MongoDB](https://www.mongodb.com/) com [Mongoose ORM](https://mongoosejs.com/)
+- **GraphQL**: [Apollo Server](https://www.apollographql.com/docs/apollo-server/)
+- **Segurança**: 
+  - [JSON Web Tokens (JWT)](https://jwt.io/) para autenticação.
+  - [Bcryptjs](https://github.com/dcodeIO/bcrypt.js) para hash de senhas.
+  - [Helmet](https://helmetjs.github.io/) para cabeçalhos de segurança HTTP.
+  - [Express Rate Limit](https://www.npmjs.com/package/express-rate-limit) para prevenção de abusos.
+- **Validação**: [Joi](https://joi.dev/) para validação rigorosa de esquemas de dados.
 
-- Node.js
-- Express.js
-- MongoDB e Mongoose
-- GraphQL (Apollo Server)
-- JWT (JSON Web Tokens)
-- Bcrypt.js
-- Joi (Validação de Dados)
-- Helmet e Cors (Segurança)
+---
 
-## Configuração e Instalação
+## 🛠️ Passo a Passo para Configuração
 
-### Pré-requisitos
+Siga as etapas abaixo para rodar o projeto em sua máquina local:
 
-- Node.js (v18.0.0 ou superior)
-- MongoDB rodando localmente ou uma string de conexão do MongoDB Atlas
+### 1. Pré-requisitos
+Certifique-se de ter instalado:
+- **Node.js** (v18+)
+- **NPM** (vem com o Node)
+- **MongoDB** (Rodando localmente ou uma conta no MongoDB Atlas)
 
-### Passos
+### 2. Clonar o Repositório
+```bash
+git clone https://github.com/Kahnnupus/Dev4all-back-entrega-1
+cd Dev4all-back-entrega-1-main
+```
 
-1. Clone o repositório em seu ambiente local.
-2. Abra a pasta do projeto em seu terminal.
-3. Instale as dependências:
-   ```bash
-   npm install
-   ```
-4. Configure as variáveis de ambiente:
-   - Copie o arquivo `.env.example` para `.env`
-   - Preencha as variáveis de ambiente necessárias, como `PORT`, `MONGO_URI`, `JWT_SECRET`, etc.
+### 3. Instalar Dependências
 
-### Executando a Aplicação
+```bash
+npm install
+```
 
-Para iniciar o servidor em modo de produção:
+### 4. Configurar Variáveis de Ambiente
+
+O arquivo `.env` já foi configurado com as credenciais padrão necessárias para o funcionamento local. Caso precise fazer alterações em credenciais específicas do MongoDB Atlas ou chaves JWT, edite o arquivo `.env` na raiz:
+
+- `MONGODB_URI`: String de conexão (Atualmente configurada para MongoDB local).
+- `JWT_SECRET`: Chave mestra para tokens (Já configurada com uma chave segura).
+- `PORT`: Porta do servidor (Padrão: `3000`).
+
+### 5. Popular o Banco de Dados (Seed)
+
+Para que você não comece com um banco vazio, execute o script de semente (seed) para criar dados de exemplo:
+
+```bash
+npm run seed
+```
+> [!IMPORTANT]
+> O comando acima criará um usuário administrador padrão:
+> - **E-mail**: `admin@dev4all.com`
+> - **Senha**: `admin`
+
+### 6. Iniciar o Servidor
+**Modo de Desenvolvimento (com auto-reload):**
+```bash
+npm run dev
+```
+**Modo de Produção:**
 ```bash
 npm start
 ```
 
-Para iniciar o servidor em modo de desenvolvimento (com nodemon):
-```bash
-npm run dev
+O servidor estará rodando em `http://localhost:3000`.
+
+---
+
+## 📡 API REST - Endpoints
+
+A API REST está acessível através do prefixo `/api`. Todas as rotas que exigem autenticação devem enviar o cabeçalho: `Authorization: Bearer <seu_token_jwt>`.
+
+### Autenticação (`/api/auth`)
+
+| Método | Endpoint | Descrição | Proteção |
+| :--- | :--- | :--- | :--- |
+| POST | `/register` | Cadastra um novo usuário | Pública |
+| POST | `/login` | Autentica e retorna o Token JWT | Pública |
+| GET | `/me` | Retorna os dados do usuário logado | JWT |
+| POST | `/forgot-password` | Simula envio de recuperação de senha | Pública |
+
+**Exemplos JSON:**
+- **Login/Register**:
+  ```json
+  {
+    "nomeCompleto": "João Silva",
+    "email": "joao@exemplo.com",
+    "senha": "senha_segura_123"
+  }
+  ```
+
+### Projetos (`/api/projects`)
+
+| Método | Endpoint | Descrição | Proteção |
+| :--- | :--- | :--- | :--- |
+| GET | `/` | Lista todos os projetos (filtros via Query) | Pública |
+| GET | `/:id` | Detalhes de um projeto específico | Pública |
+| POST | `/` | Cria um novo projeto | Admin |
+| PATCH | `/:id` | Atualiza um projeto existente | Admin |
+| DELETE | `/:id` | Remove (desativa) um projeto | Admin |
+
+**Exemplo JSON (POST/PATCH):**
+```json
+{
+  "titulo": "Novo E-commerce",
+  "descricao": "Descrição detalhada do projeto...",
+  "categorias": ["Desenvolvimento", "Design"],
+  "imagemUrl": "https://link-da-imagem.com",
+  "destaque": true
+}
 ```
 
-O servidor iniciará na porta configurada (o padrão é 3000).
+### Orçamentos (`/api/quotes`)
 
-## Rotas da API
+| Método | Endpoint | Descrição | Proteção |
+| :--- | :--- | :--- | :--- |
+| POST | `/` | Envia um novo pedido de orçamento | Pública / Opcional JWT |
+| GET | `/my` | Lista orçamentos do usuário logado | JWT |
+| GET | `/` | Lista todos os orçamentos (para gestão) | Admin |
+| PATCH | `/:id/status`| Atualiza status (pendente, aprovado, etc) | Admin |
+| DELETE | `/:id` | Remove um orçamento | Admin |
 
-### API REST
-
-A URL base para a API REST é `http://localhost:3000/api`.
-
-- Autenticação: `/api/auth/register`, `/api/auth/login`, `/api/auth/me`
-- Projetos: `/api/projects` (GET, POST), `/api/projects/:id` (GET, PATCH, DELETE)
-- Orçamentos: `/api/quotes` (GET, POST), `/api/quotes/:id` (GET, PATCH)
-- Equipe: `/api/team` (GET, POST), `/api/team/:id` (GET, PATCH, DELETE)
-
-### GraphQL
-
-O endpoint GraphQL está disponível em `http://localhost:3000/graphql`. Você pode testar consultas (queries) e mutações (mutations) usando o Apollo Sandbox.
-
-## Popular Banco de Dados
-Para popular o banco de dados com dados iniciais, você pode rodar o comando:
-```bash
-npm run seed
+**Exemplo JSON (POST):**
+```json
+{
+  "nomeCompleto": "Maria Souza",
+  "email": "maria@empresa.com",
+  "telefone": "11999999999",
+  "tipoServico": ["Desenvolvimento"],
+  "descricao": "Preciso de um site para minha loja."
+}
 ```
 
-## Licença
-Licença MIT
+### Equipe (`/api/team`)
+
+| Método | Endpoint | Descrição | Proteção |
+| :--- | :--- | :--- | :--- |
+| GET | `/` | Lista os membros da equipe | Pública |
+| POST | `/` | Adiciona novo membro | Admin |
+| PATCH | `/:id` | Atualiza dados do membro | Admin |
+| DELETE | `/:id` | Remove membro da equipe | Admin |
+
+**Exemplo JSON (POST/PATCH):**
+```json
+{
+  "nome": "Carla Tech",
+  "cargo": "Desenvolvedora Senior",
+  "bio": "Especialista em Node.js e React.",
+  "linkedinUrl": "https://linkedin.com/in/perfil"
+}
+```
+
+---
+
+## 🕸️ API GraphQL
+
+O endpoint único para o GraphQL é: `http://localhost:3000/graphql`.  
+Você pode usar o **Apollo Sandbox** (navegando até o link acima no browser) para testar.
+
+### Queries Principais
+- `me`: Retorna perfil do usuário autenticado.
+- `projects(categoria: String, destaque: Boolean, page: Int)`: Busca projetos com paginação e filtros.
+- `project(id: ID!)`: Detalhes de um projeto.
+- `quotes`: Lista orçamentos (Admin).
+- `myQuotes`: Lista orçamentos do próprio usuário.
+- `teamMembers`: Lista membros da equipe.
+
+### Mutations Principais
+- `login(input: LoginInput!)`: Gera token JWT.
+- `register(input: RegisterInput!)`: Cria conta.
+- `createProject(input: CreateProjectInput!)`: Novo projeto (Admin).
+- `submitQuote(input: CreateQuoteInput!)`: Envia orçamento.
+- `updateQuoteStatus(id: ID!, status: String!)`: Altera status (Admin).
+
+---
+
+## 🔐 Segurança e Validação
+
+### JWT (JSON Web Tokens)
+A segurança é baseada em Tokens. Quando você faz login, recebe um `token`. Esse token deve ser armazenado (geralmente no `localStorage` do frontend) e enviado em todas as requisições protegidas. 
+- O backend valida a assinatura do token e extrai o ID do usuário.
+- Existe distinção entre `user` (cliente) e `admin` (gestor da agência).
+
+### Joi (Validação de Dados)
+Para garantir que o banco de dados não receba lixo, usamos o **Joi**. Todas as entradas de dados (corpo da requisição) passam por um validador antes de chegar ao controller.
+- **Exemplo de validação de registro**: O e-mail deve ser válido, a senha deve ter no mínimo 8 caracteres e o nome é obrigatório.
+- Se os dados estiverem errados, a API retorna um erro `400 Bad Request` com uma mensagem explicativa.
+
+---
+
+## 📂 Estrutura de Pastas
+
+- `/src/config`: Conexões com Banco de Dados e Helpers de JWT.
+- `/src/controllers`: Lógica de negócio das rotas REST.
+- `/src/graphql`: Definições (`typeDefs`) e implementações (`resolvers`) do GraphQL.
+- `/src/middlewares`: Filtros de autenticação, erros e segurança.
+- `/src/models`: Definição das tabelas (coleções) do MongoDB.
+- `/src/routes`: Definição dos caminhos da API REST.
+- `/src/validators`: Esquemas de validação do Joi.
+- `/src/scripts`: Scripts utilitários (como o `seed.js`).
+
+---
+
+**Desenvolvido com ❤️ pela equipe Dev4all.**
