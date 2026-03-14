@@ -48,7 +48,7 @@ export const icons = {
 };
 
 /**
- * Returns an icon SVG string with explicit pixel size.
+ * Returns an icon SVG string with explicit pixel.
  * @param {string} iconSvg - An icon string from `icons`
  * @param {number} size - Width/height in pixels (default 18)
  */
