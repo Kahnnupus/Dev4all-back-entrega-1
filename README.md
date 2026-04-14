@@ -214,4 +214,44 @@ Para garantir que o banco de dados não receba lixo, usamos o **Joi**. Todas as 
 
 ---
 
+## 🖥️ Frontend
+
+O frontend é servido estaticamente pelo próprio Express via `express.static('public')` e está 100% integrado à API.
+
+### Páginas
+
+| Arquivo | URL | Descrição |
+| :--- | :--- | :--- |
+| `index.html` | `/` | Landing page com projetos e equipe carregados da API |
+| `login.html` | `/login.html` | Login com JWT |
+| `registro.html` | `/registro.html` | Cadastro de nova conta |
+| `esqueci-senha.html` | `/esqueci-senha.html` | Recuperação de senha |
+| `contato.html` | `/contato.html` | Formulário de orçamento |
+| `confirmacao.html` | `/confirmacao.html` | Confirmação de envio |
+| `portfolio.html` | `/portfolio.html` | Portfólio carregado da API |
+| `sobre.html` | `/sobre.html` | Equipe carregada da API |
+| `painel.html` | `/painel.html` | Dashboard (cliente e admin — role-based) |
+
+### Painel Admin
+
+O painel detecta automaticamente o `role` do usuário via JWT:
+
+- **Usuário comum**: visualiza e acompanha seus próprios orçamentos com status em tempo real.
+- **Admin**: gerencia todos os orçamentos, projetos do portfólio e membros da equipe.
+
+Funcionalidades do painel admin:
+- **Orçamentos**: listagem com filtros por status, busca por cliente, alteração de status direto na tabela.
+- **Projetos**: CRUD completo — criar, editar categorias/destaque e excluir projetos que refletem em `portfolio.html`.
+- **Equipe**: CRUD completo — adicionar, editar nome/cargo/cor do avatar e remover membros que refletem em `sobre.html`.
+
+### Tecnologias do Frontend
+
+- HTML5 + CSS3 + JavaScript (Vanilla, sem frameworks)
+- Módulos ES6 (`type="module"`)
+- Font Awesome 6.5 (ícones via CDN)
+- Google Fonts — Inter
+- Design system próprio com variáveis CSS
+
+---
+
 **Desenvolvido com ❤️ pela equipe Dev4all.**

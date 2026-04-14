@@ -43,7 +43,12 @@ export const getQuotes = catchAsync(async (req, res) => {
 
 
 export const getMyQuotes = catchAsync(async (req, res) => {
-  const quotes = await Quote.find({ usuario: req.user._id }).sort({ createdAt: -1 });
+  const quotes = await Quote.find({
+    $or: [
+      { usuario: req.user._id },
+      { email: req.user.email, usuario: null },
+    ],
+  }).sort({ createdAt: -1 });
   res.json({ success: true, data: quotes });
 });
 

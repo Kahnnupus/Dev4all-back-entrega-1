@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Orçamento Enviado — Dev4all</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/global.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/auth.css">
+</head>
+<body class="auth-body">
+  <a href="/" class="auth-logo">
+    <span>Dev4all</span>
+  </a>
+  <div class="auth-circle auth-circle-1"></div>
+  <div class="auth-circle auth-circle-2"></div>
+
+  <div class="auth-wrapper">
+    <div class="auth-card" style="text-align:center">
+      <div class="success-icon">
+        <div class="success-circle"><i class="fa-solid fa-check"></i></div>
+      </div>
+      <h1>Orçamento enviado<br>com sucesso!</h1>
+      <p class="auth-subtitle">Responderemos em até 24 horas pelo<br>e-mail informado no formulário.</p>
+      <p style="margin:1.5rem 0 0.5rem;color:var(--text-mid);font-size:14px">Número do protocolo:</p>
+      <p id="protocolo" style="font-size:1.25rem;font-weight:700;color:var(--blue-primary)">#DEV2026-0000</p>
+      <div style="display:flex;gap:1rem;margin-top:2rem;justify-content:center">
+        <a href="/" class="btn btn-outline-dark btn-lg">← Voltar ao início</a>
+        <a href="/contato.html" class="btn btn-primary btn-lg">Novo Orçamento</a>
+      </div>
+    </div>
+    <p class="auth-copyright">© 2026 Dev4all. Todos os direitos reservados.</p>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const proto = params.get('protocolo') || 'DEV2026-' + Math.floor(Math.random()*9000+1000);
+    document.getElementById('protocolo').textContent = '#' + proto;
+  </script>
+</body>
+</html>

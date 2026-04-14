@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Esqueci a Senha — Dev4all</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/global.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/auth.css">
+</head>
+<body class="auth-body">
+  <a href="/" class="auth-logo">
+    <span>Dev4all</span>
+  </a>
+  <div class="auth-circle auth-circle-1"></div>
+  <div class="auth-circle auth-circle-2"></div>
+
+  <div class="auth-wrapper">
+    <div class="auth-card" style="text-align:center">
+      <div class="forgot-icon"><i class="fa-solid fa-lock"></i></div>
+      <h1>Esqueceu a senha?</h1>
+      <p class="auth-subtitle">Digite seu e-mail e enviaremos um link<br>para redefinir sua senha.</p>
+
+      <form id="form-forgot" style="text-align:left">
+        <div class="form-group">
+          <label for="forgot-email">E-mail</label>
+          <input type="email" id="forgot-email" placeholder="seu@email.com" required autocomplete="email">
+        </div>
+        <button type="submit" class="btn btn-primary btn-block btn-lg">Enviar link de recuperação</button>
+        <p class="auth-footer-link" style="text-align:center;margin-top:1.25rem">
+          <a href="/login.html" class="form-link">← Voltar para o Login</a>
+        </p>
+      </form>
+    </div>
+    <p class="auth-copyright">© 2026 Dev4all. Todos os direitos reservados.</p>
+  </div>
+
+  <script type="module" src="/js/auth.js"></script>
+</body>
+</html>

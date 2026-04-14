@@ -1,381 +1,296 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dev4all — Agência de Desenvolvimento Web</title>
-  <meta name="description" content="Transformamos suas ideias em soluções digitais de alto impacto. Desenvolvimento web, design e consultoria." />
-  <link rel="stylesheet" href="/css/global.css" />
-  <link rel="stylesheet" href="/css/components.css" />
-  <link rel="stylesheet" href="/css/home.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dev4all — Desenvolvimento Web & Mobile de Alta Performance</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/global.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/home.css">
 </head>
 <body>
-
-  <!-- ── NAVBAR ─────────────────────────────────────────────────────── -->
-  <nav class="navbar" id="navbar">
-    <div class="navbar__inner">
-      <a href="/" class="navbar__logo">
-        <div class="navbar__logo-icon">D4</div>
-        Dev<span>4all</span>
+  <!-- NAVBAR -->
+  <nav id="navbar" class="navbar">
+    <div class="container navbar-inner">
+      <a href="/" class="nav-logo">
+        <span>Dev4all</span>
       </a>
-
-      <ul class="navbar__links" id="navLinks">
-        <li><a href="/#home" class="active">Home</a></li>
-        <li><a href="/#nossos-trabalhos">Portfolio</a></li>
-        <li><a href="/#sobre-o-projeto">Sobre nós</a></li>
-        <li><a href="/orcamento.html">Contate-nos</a></li>
-      </ul>
-
-      <div class="navbar__actions" id="navActions">
-        <a href="/login.html" class="btn btn-outline btn-sm" id="btnLogin">Login</a>
-        <a href="/orcamento.html" class="btn btn-primary btn-sm">Fazer Orçamento</a>
-      </div>
-
-      <button class="navbar__toggle" id="navToggle" aria-label="Menu">
+      <button id="menu-toggle" class="menu-toggle" aria-label="Menu">
         <span></span><span></span><span></span>
       </button>
+      <ul id="nav-menu" class="nav-menu">
+        <li><a href="/" class="nav-link active">Home</a></li>
+        <li><a href="/portfolio.html" class="nav-link">Portfólio</a></li>
+        <li><a href="/sobre.html" class="nav-link">Sobre nós</a></li>
+        <li><a href="/contato.html" class="nav-link">Contato</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a id="nav-painel" href="/painel.html" class="btn btn-primary" style="display:none">Meu Painel</a>
+        <a id="nav-login" href="/login.html" class="btn btn-primary">Login</a>
+      </div>
     </div>
   </nav>
 
-  <!-- ── HERO ───────────────────────────────────────────────────────── -->
-  <section class="hero" id="home">
-    <div class="hero__dots hero__dots--tl"></div>
-    <div class="hero__dots hero__dots--br"></div>
-    <div class="container">
-      <div class="hero__content">
-        <div class="hero__badge">
-          <span class="hero__badge-dot"></span>
-          Agência Full Stack
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <div class="hero-text">
+        <p class="hero-label">Dev Web & Mobile de Alta Performance</p>
+        <h1>Transforme sua<br>ideia em realidade<br>digital</h1>
+        <p class="hero-subtitle">Automatize seu negócio com tecnologia de ponta.<br>Criamos sites, sistemas e apps com facilidade,<br>acessibilidade e máxima performance.</p>
+        <div class="hero-actions">
+          <a href="/contato.html" class="btn btn-primary btn-lg">Solicite seu projeto →</a>
+          <a href="/portfolio.html" class="btn btn-outline btn-lg">Ver portfólio</a>
         </div>
-        <h1 class="hero__title">
-          Transformamos suas<br>
-          <span class="hero__title-accent">ideias em soluções</span><br>
-          digitais de impacto
-        </h1>
-        <p class="hero__subtitle">
-          Desenvolvimento web, design de interfaces e consultoria estratégica para empresas que querem crescer no digital.
-        </p>
-        <div class="hero__actions">
-          <a href="/orcamento.html" class="btn btn-primary btn-lg">
-            Fazer Orçamento Grátis
-          </a>
-          <a href="/#nossos-trabalhos" class="btn btn-outline btn-lg">
-            Ver Portfolio
-          </a>
-        </div>
-        <div class="hero__stats">
-          <div class="hero__stat">
-            <strong>50+</strong>
-            <span>Projetos entregues</span>
-          </div>
-          <div class="hero__stat-divider"></div>
-          <div class="hero__stat">
-            <strong>98%</strong>
-            <span>Clientes satisfeitos</span>
-          </div>
-          <div class="hero__stat-divider"></div>
-          <div class="hero__stat">
-            <strong>4</strong>
-            <span>Especialistas</span>
-          </div>
+        <div class="hero-stats">
+          <div class="hero-stat"><strong>50+</strong><span>Projetos</span></div>
+          <div class="hero-stat-divider"></div>
+          <div class="hero-stat"><strong>98%</strong><span>Satisfação</span></div>
+          <div class="hero-stat-divider"></div>
+          <div class="hero-stat"><strong>24/7</strong><span>Suporte</span></div>
         </div>
       </div>
-      <div class="hero__visual">
-        <div class="hero__card hero__card--1">
-          <div class="hero__card-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-          </div>
-          <div>
-            <div class="hero__card-title">Performance</div>
-            <div class="hero__card-sub">Sites ultra-rápidos</div>
-          </div>
+      <div class="hero-card">
+        <div class="hero-card-mac">
+          <span class="mac-dot red"></span>
+          <span class="mac-dot yellow"></span>
+          <span class="mac-dot green"></span>
         </div>
-        <div class="hero__card hero__card--2">
-          <div class="hero__card-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>
-          </div>
-          <div>
-            <div class="hero__card-title">Design Moderno</div>
-            <div class="hero__card-sub">UI/UX de alto nível</div>
-          </div>
-        </div>
-        <div class="hero__card hero__card--3">
-          <div class="hero__card-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-          </div>
-          <div>
-            <div class="hero__card-title">Segurança</div>
-            <div class="hero__card-sub">Dados protegidos</div>
-          </div>
-        </div>
-        <div class="hero__mockup">
-          <div class="hero__browser">
-            <div class="hero__browser-bar">
-              <span></span><span></span><span></span>
-              <div class="hero__browser-url">dev4all.com</div>
+        <div class="hero-card-inner">
+          <div class="hero-card-stats">
+            <div class="hcs-item">
+              <span class="hcs-num">47</span>
+              <span class="hcs-label">Projetos</span>
             </div>
-            <div class="hero__browser-body">
-              <div class="hero__code-line" style="width:60%"></div>
-              <div class="hero__code-line" style="width:80%; background:var(--accent); opacity:0.3"></div>
-              <div class="hero__code-line" style="width:40%"></div>
-              <div class="hero__code-line" style="width:70%"></div>
-              <div class="hero__code-line" style="width:55%; background:var(--accent); opacity:0.3"></div>
-              <div class="hero__code-line" style="width:65%"></div>
+            <div class="hcs-item">
+              <span class="hcs-num">98%</span>
+              <span class="hcs-label">Satisfação</span>
             </div>
+            <div class="hcs-item">
+              <span class="hcs-num">99.9%</span>
+              <span class="hcs-label">Uptime</span>
+            </div>
+          </div>
+          <p class="hcs-caption">Crescimento de projetos por mês</p>
+          <div class="bar-chart">
+            <div class="bar" style="height:40%"></div>
+            <div class="bar" style="height:55%"></div>
+            <div class="bar" style="height:45%"></div>
+            <div class="bar" style="height:70%"></div>
+            <div class="bar" style="height:60%"></div>
+            <div class="bar active" style="height:100%"></div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ── SOBRE O PROJETO ────────────────────────────────────────────── -->
-  <section class="section bg-gray" id="sobre-o-projeto">
+  <!-- BRANDS STRIP -->
+  <div class="brands-strip">
+<div class="brands-track">
+      <span>StartupX</span><span>MercadoBR</span><span>TechFlow</span>
+      <span>BuildCo</span><span>NovaPay</span><span>AgileHub</span>
+      <span>StartupX</span><span>MercadoBR</span><span>TechFlow</span>
+      <span>BuildCo</span><span>NovaPay</span><span>AgileHub</span>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section class="section services-section" id="servicos">
     <div class="container">
-      <div class="sobre__grid">
-        <div class="sobre__content">
-          <div class="sobre__tag">Sobre nós</div>
-          <h2>Sobre o Projeto <span class="text-accent">Dev4all</span></h2>
-          <p>
-            Somos uma agência formada por quatro estudantes apaixonados por tecnologia, unidos pelo objetivo de criar soluções digitais acessíveis, modernas e de alto impacto.
-          </p>
-          <p>
-            Nossa missão é democratizar o acesso ao desenvolvimento web de qualidade, entregando projetos que combinam design elegante com código robusto e escalável.
-          </p>
-          <div class="sobre__features">
-            <div class="sobre__feature">
-              <div class="sobre__feature-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>
-              </div>
-              <div>
-                <h4>Entrega Rápida</h4>
-                <p>Metodologia ágil com sprints semanais e entregas contínuas.</p>
-              </div>
-            </div>
-            <div class="sobre__feature">
-              <div class="sobre__feature-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><line x1="9" y1="18" x2="15" y2="18"/><line x1="10" y1="22" x2="14" y2="22"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"/></svg>
-              </div>
-              <div>
-                <h4>Inovação Constante</h4>
-                <p>Sempre atualizados com as melhores tecnologias do mercado.</p>
-              </div>
-            </div>
-            <div class="sobre__feature">
-              <div class="sobre__feature-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-              </div>
-              <div>
-                <h4>Parceria Real</h4>
-                <p>Trabalhamos em conjunto com você em cada etapa do projeto.</p>
-              </div>
-            </div>
-          </div>
-          <a href="/orcamento.html" class="btn btn-primary">Falar Conosco</a>
+      <div class="section-label">NOSSOS SERVIÇOS</div>
+      <h2 class="section-title">Tudo que você precisa<br>num só lugar</h2>
+      <p class="section-subtitle">Soluções digitais completas para transformar seu negócio</p>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon" style="background:#dbeafe;color:#2563eb"><i class="fa-solid fa-globe"></i></div>
+          <h3>Sites Profissionais</h3>
+          <p>Sites modernos, responsivos e otimizados para SEO que convertem visitantes em clientes.</p>
+          <a href="/contato.html" class="service-arrow"><i class="fa-solid fa-arrow-right"></i></a>
         </div>
-        <div class="sobre__stats-grid">
-          <div class="sobre__stat-card">
-            <div class="sobre__stat-number">4</div>
-            <div class="sobre__stat-label">Especialistas</div>
-          </div>
-          <div class="sobre__stat-card bg-accent">
-            <div class="sobre__stat-number">50+</div>
-            <div class="sobre__stat-label">Projetos</div>
-          </div>
-          <div class="sobre__stat-card bg-accent">
-            <div class="sobre__stat-number">98%</div>
-            <div class="sobre__stat-label">Satisfação</div>
-          </div>
-          <div class="sobre__stat-card">
-            <div class="sobre__stat-number">24h</div>
-            <div class="sobre__stat-label">Suporte</div>
-          </div>
+        <div class="service-card">
+          <div class="service-icon" style="background:#d1fae5;color:#10b981"><i class="fa-solid fa-mobile-screen"></i></div>
+          <h3>Apps Mobile</h3>
+          <p>Aplicativos iOS e Android de alta performance com UI/UX impecável e entrega ágil.</p>
+          <a href="/contato.html" class="service-arrow"><i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        <div class="service-card">
+          <div class="service-icon" style="background:#ede9fe;color:#8b5cf6"><i class="fa-solid fa-gear"></i></div>
+          <h3>Sistemas Web</h3>
+          <p>Plataformas e sistemas customizados com painel admin, automações e integrações.</p>
+          <a href="/contato.html" class="service-arrow"><i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        <div class="service-card">
+          <div class="service-icon" style="background:#ffedd5;color:#f59e0b"><i class="fa-solid fa-rocket"></i></div>
+          <h3>Performance & SEO</h3>
+          <p>Otimização técnica para velocidade máxima, melhor ranqueamento e mais conversões.</p>
+          <a href="/contato.html" class="service-arrow"><i class="fa-solid fa-arrow-right"></i></a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ── CONTEXTO / SERVIÇOS ────────────────────────────────────────── -->
-  <section class="section" id="contexto">
+  <!-- HOW IT WORKS -->
+  <section class="section how-section" id="como-funciona">
     <div class="container">
-      <div class="section-header">
-        <h2>Contexto</h2>
-        <p>Soluções completas para cada etapa do seu projeto digital</p>
-        <div class="section-divider"></div>
-      </div>
-      <div class="grid-3">
-        <div class="servico-card">
-          <div class="servico-card__icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="28" height="28"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-          </div>
+      <div class="section-label">COMO FUNCIONA</div>
+      <h2 class="section-title">Do briefing ao lançamento<br>em 4 etapas simples</h2>
+      <div class="steps-grid">
+        <div class="step">
+          <div class="step-number">01</div>
+          <h3>Briefing</h3>
+          <p>Entendemos seu projeto, metas e público alvo em uma reunião rápida.</p>
+        </div>
+        <div class="step-connector"></div>
+        <div class="step">
+          <div class="step-number">02</div>
+          <h3>Design & Prototipagem</h3>
+          <p>Criamos o visual no Figma e apresentamos para sua aprovação.</p>
+        </div>
+        <div class="step-connector"></div>
+        <div class="step">
+          <div class="step-number">03</div>
           <h3>Desenvolvimento</h3>
-          <p>Sites, sistemas web e APIs robustas com as melhores tecnologias do mercado.</p>
+          <p>Programamos com as melhores tecnologias: React, Next.js, Node.</p>
         </div>
-        <div class="servico-card">
-          <div class="servico-card__icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="28" height="28"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>
-          </div>
-          <h3>Design UI/UX</h3>
-          <p>Interfaces bonitas, intuitivas e acessíveis que engajam seus usuários.</p>
-        </div>
-        <div class="servico-card">
-          <div class="servico-card__icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="28" height="28"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-          </div>
-          <h3>Marketing Digital</h3>
-          <p>SEO, campanhas e estratégias para aumentar sua presença online.</p>
+        <div class="step-connector"></div>
+        <div class="step">
+          <div class="step-number">04</div>
+          <h3>Entrega & Suporte</h3>
+          <p>Lançamos o projeto e oferecemos suporte contínuo 24/7.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ── NOSSOS TRABALHOS ───────────────────────────────────────────── -->
-  <section class="section bg-gray" id="nossos-trabalhos">
+  <!-- PORTFOLIO PREVIEW -->
+  <section class="section portfolio-section" id="portfolio">
     <div class="container">
-      <div class="section-header">
-        <h2>Nossos Trabalhos</h2>
-        <p>Projetos que desenvolvemos com dedicação e excelência</p>
-        <div class="section-divider"></div>
-      </div>
-
-      <!-- Filtros de categoria -->
-      <div class="portfolio-filters">
-        <button class="chip selected" data-filter="all">Todos</button>
-        <button class="chip" data-filter="Desenvolvimento">Desenvolvimento</button>
-        <button class="chip" data-filter="Design">Design</button>
-        <button class="chip" data-filter="Marketing">Marketing</button>
-        <button class="chip" data-filter="Consultoria">Consultoria</button>
-      </div>
-
-      <!-- Grid de projetos -->
-      <div class="grid-3" id="projectsGrid">
-        <!-- Skeletons enquanto carrega -->
-        <div class="card skeleton-card">
-          <div class="skeleton" style="height:220px"></div>
-          <div class="card__body">
-            <div class="skeleton" style="height:24px; width:70%; margin-bottom:8px"></div>
-            <div class="skeleton" style="height:16px; margin-bottom:4px"></div>
-            <div class="skeleton" style="height:16px; width:80%"></div>
-          </div>
-        </div>
-        <div class="card skeleton-card">
-          <div class="skeleton" style="height:220px"></div>
-          <div class="card__body">
-            <div class="skeleton" style="height:24px; width:70%; margin-bottom:8px"></div>
-            <div class="skeleton" style="height:16px; margin-bottom:4px"></div>
-            <div class="skeleton" style="height:16px; width:80%"></div>
-          </div>
-        </div>
-        <div class="card skeleton-card">
-          <div class="skeleton" style="height:220px"></div>
-          <div class="card__body">
-            <div class="skeleton" style="height:24px; width:70%; margin-bottom:8px"></div>
-            <div class="skeleton" style="height:16px; margin-bottom:4px"></div>
-            <div class="skeleton" style="height:16px; width:80%"></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="text-center" style="margin-top:3rem" id="portfolioShowMore" style="display:none">
-        <a href="#nossos-trabalhos" class="btn btn-outline" id="btnLoadMore">Carregar mais</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── EQUIPE ─────────────────────────────────────────────────────── -->
-  <section class="section" id="equipe">
-    <div class="container">
-      <div class="section-header">
-        <h2>Equipe <span class="text-accent">Dev4all</span></h2>
-        <p>Os especialistas por trás de cada projeto incrível</p>
-        <div class="section-divider"></div>
-      </div>
-      <div class="grid-4" id="teamGrid">
+      <div class="section-label">NOSSO PORTFÓLIO</div>
+      <h2 class="section-title">Projetos que entregam<br>resultados reais</h2>
+      <div id="projects-grid" class="projects-grid">
         <!-- Carregado via JS -->
-        <div class="team-card skeleton-card">
-          <div class="skeleton" style="width:88px;height:88px;border-radius:50%;margin:0 auto 1rem"></div>
-          <div class="skeleton" style="height:20px;width:60%;margin:0 auto 8px"></div>
-          <div class="skeleton" style="height:14px;width:40%;margin:0 auto"></div>
+        <div class="skeleton" style="height:280px;border-radius:16px"></div>
+        <div class="skeleton" style="height:280px;border-radius:16px"></div>
+        <div class="skeleton" style="height:280px;border-radius:16px"></div>
+      </div>
+      <div style="text-align:center;margin-top:2.5rem">
+        <a href="/portfolio.html" class="btn btn-outline-dark btn-lg">Ver mais projetos →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section testimonials-section">
+    <div class="container">
+      <div class="section-label">DEPOIMENTOS</div>
+      <h2 class="section-title">O que nossos clientes dizem</h2>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+          <p>"A Dev4all transformou nosso negócio! O site ficou incrível e as vendas aumentaram 3x em 60 dias."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar" style="background:#2563eb">CA</div>
+            <div>
+              <strong>Carlos Silva</strong>
+              <span>CEO MercadoBR</span>
+            </div>
+          </div>
         </div>
-        <div class="team-card skeleton-card">
-          <div class="skeleton" style="width:88px;height:88px;border-radius:50%;margin:0 auto 1rem"></div>
-          <div class="skeleton" style="height:20px;width:60%;margin:0 auto 8px"></div>
-          <div class="skeleton" style="height:14px;width:40%;margin:0 auto"></div>
+        <div class="testimonial-card">
+          <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+          <p>"Equipe super profissional, prazo cumprido e suporte excelente. Recomendo 100% para qualquer empresa."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar" style="background:#10b981">AN</div>
+            <div>
+              <strong>Ana Beatriz</strong>
+              <span>Fundadora StartupX</span>
+            </div>
+          </div>
         </div>
-        <div class="team-card skeleton-card">
-          <div class="skeleton" style="width:88px;height:88px;border-radius:50%;margin:0 auto 1rem"></div>
-          <div class="skeleton" style="height:20px;width:60%;margin:0 auto 8px"></div>
-          <div class="skeleton" style="height:14px;width:40%;margin:0 auto"></div>
-        </div>
-        <div class="team-card skeleton-card">
-          <div class="skeleton" style="width:88px;height:88px;border-radius:50%;margin:0 auto 1rem"></div>
-          <div class="skeleton" style="height:20px;width:60%;margin:0 auto 8px"></div>
-          <div class="skeleton" style="height:14px;width:40%;margin:0 auto"></div>
+        <div class="testimonial-card">
+          <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+          <p>"O app mobile superou todas as expectativas. Interface linda, rápido e sem bugs. Melhor investimento!"</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar" style="background:#8b5cf6">RO</div>
+            <div>
+              <strong>Roberto Lima</strong>
+              <span>CTO TechFlow</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ── CTA ────────────────────────────────────────────────────────── -->
+  <!-- CTA SECTION -->
   <section class="cta-section">
-    <div class="container">
-      <div class="cta__inner">
-        <div class="cta__content">
-          <h2>Pronto para começar<br>seu projeto?</h2>
-          <p>Entre em contato e receba um orçamento gratuito em até 24 horas.</p>
-        </div>
-        <div class="cta__actions">
-          <a href="/orcamento.html" class="btn btn-primary btn-lg">Fazer Orçamento Grátis</a>
-          <a href="/#equipe" class="btn btn-outline btn-lg" style="border-color:white; color:white; backdrop-filter:blur(8px)">
-            Conhecer a Equipe
-          </a>
-        </div>
+    <div class="container cta-inner">
+      <h2>Pronto para transformar<br>seu negócio digital?</h2>
+      <p>Fale com nossa equipe hoje e receba um orçamento gratuito em menos de 24 horas.</p>
+      <div class="cta-actions">
+        <a href="/contato.html" class="btn btn-primary btn-lg">Solicite seu projeto grátis</a>
+        <a href="https://wa.me/5511999999999" class="btn btn-lg" style="background:#22c55e;color:white;border-color:#22c55e" target="_blank">Falar no WhatsApp</a>
       </div>
     </div>
   </section>
 
-  <!-- ── FOOTER ─────────────────────────────────────────────────────── -->
+  <!-- FOOTER -->
   <footer class="footer">
-    <div class="container">
-      <div class="footer__grid">
-        <div class="footer__brand">
-          <div class="footer__logo">Dev<span>4all</span></div>
-          <p>Transformamos ideias em soluções digitais de alto impacto. Seu parceiro tecnológico de confiança.</p>
-        </div>
-        <div class="footer__col">
-          <h4>Navegação</h4>
-          <ul>
-            <li><a href="/#home">Home</a></li>
-            <li><a href="/#nossos-trabalhos">Portfolio</a></li>
-            <li><a href="/#sobre-o-projeto">Sobre nós</a></li>
-            <li><a href="/orcamento.html">Contate-nos</a></li>
-          </ul>
-        </div>
-        <div class="footer__col">
-          <h4>Serviços</h4>
-          <ul>
-            <li><a href="/orcamento.html">Desenvolvimento</a></li>
-            <li><a href="/orcamento.html">Design UI/UX</a></li>
-            <li><a href="/orcamento.html">Marketing</a></li>
-            <li><a href="/orcamento.html">Consultoria</a></li>
-          </ul>
-        </div>
-        <div class="footer__col">
-          <h4>Conta</h4>
-          <ul>
-            <li><a href="/login.html">Login</a></li>
-            <li><a href="/registro.html">Criar conta</a></li>
-            <li><a href="/painel.html">Meu painel</a></li>
-          </ul>
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a href="/" class="nav-logo footer-logo">
+          <span>Dev4all</span>
+        </a>
+        <p>Criamos experiências digitais<br>que transformam negócios.</p>
+        <div class="footer-socials">
+          <a href="#" class="social-btn" style="background:#2563eb"></a>
+          <a href="#" class="social-btn" style="background:#22c55e"></a>
+          <a href="#" class="social-btn" style="background:#8b5cf6"></a>
+          <a href="#" class="social-btn" style="background:#ef4444"></a>
         </div>
       </div>
-      <div class="footer__bottom">
-        <span>&copy; 2026 Dev4all. Todos os direitos reservados.</span>
-        <span style="display:flex;align-items:center;gap:6px">
-          Feito com
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14" style="color:#ef4444"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-          pela equipe Dev4all
-        </span>
+      <div class="footer-col">
+        <h4>Serviços</h4>
+        <ul>
+          <li><a href="/contato.html">Sites Profissionais</a></li>
+          <li><a href="/contato.html">Apps Mobile</a></li>
+          <li><a href="/contato.html">Sistemas Web</a></li>
+          <li><a href="/contato.html">Consultoria</a></li>
+        </ul>
       </div>
+      <div class="footer-col">
+        <h4>Empresa</h4>
+        <ul>
+          <li><a href="/sobre.html">Sobre nós</a></li>
+          <li><a href="/portfolio.html">Portfólio</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Carreiras</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Suporte</h4>
+        <ul>
+          <li><a href="#">Central de ajuda</a></li>
+          <li><a href="#">WhatsApp</a></li>
+          <li><a href="#">E-mail</a></li>
+          <li><a href="#">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="#">Privacidade</a></li>
+          <li><a href="#">Termos de uso</a></li>
+          <li><a href="#">Cookies</a></li>
+          <li><a href="#">LGPD</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Dev4all. Todos os direitos reservados. Feito com cuidado pela equipe Dev4all</p>
     </div>
   </footer>
 

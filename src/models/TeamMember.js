@@ -22,6 +22,7 @@ const teamMemberSchema = new mongoose.Schema(
     fotoUrl: { type: String, default: null },
     linkedinUrl: { type: String, default: null },
     githubUrl: { type: String, default: null },
+    cor: { type: String, default: '#2563eb' },
     ordem: { type: Number, default: 0 },
     ativo: { type: Boolean, default: true },
   },

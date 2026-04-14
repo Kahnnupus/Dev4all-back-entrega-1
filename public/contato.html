@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contato — Dev4all</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/global.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/pages.css">
+</head>
+<body>
+
+  <nav id="navbar" class="navbar scrolled">
+    <div class="container navbar-inner">
+      <a href="/" class="nav-logo"><span>Dev4all</span></a>
+      <button id="menu-toggle" class="menu-toggle"><span></span><span></span><span></span></button>
+      <ul id="nav-menu" class="nav-menu">
+        <li><a href="/" class="nav-link">Home</a></li>
+        <li><a href="/portfolio.html" class="nav-link">Portfólio</a></li>
+        <li><a href="/sobre.html" class="nav-link">Sobre nós</a></li>
+        <li><a href="/contato.html" class="nav-link active">Contato</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a id="nav-painel" href="/painel.html" class="btn btn-primary" style="display:none">Meu Painel</a>
+        <a id="nav-login" href="/login.html" class="btn btn-primary">Login</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="page-hero">
+    <div class="container page-hero-inner">
+      <span class="section-label">CONTATO</span>
+      <h1>Formulário de Orçamento</h1>
+      <p>Por favor, forneça as informações necessárias para que possamos processar seu orçamento.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="contact-form-card">
+        <div class="contact-form-header">
+          <h2>Solicite seu Orçamento</h2>
+          <p class="text-muted">Preencha os campos abaixo e responderemos em até 24 horas</p>
+        </div>
+        <form id="form-contato">
+          <div class="form-row" style="grid-template-columns:1fr 1fr 1fr">
+            <div class="form-group">
+              <label for="contato-nome">Nome Completo</label>
+              <input type="text" id="contato-nome" placeholder="Digite seu nome completo" required>
+            </div>
+            <div class="form-group">
+              <label for="contato-email">Email</label>
+              <input type="email" id="contato-email" placeholder="Digite seu email" required>
+            </div>
+            <div class="form-group">
+              <label for="contato-telefone">Telefone</label>
+              <input type="tel" id="contato-telefone" placeholder="(00) 00000-0000" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Tipo de Serviço</label>
+            <div class="chips-row">
+              <button type="button" class="chip service-chip" data-value="Consultoria">Consultoria</button>
+              <button type="button" class="chip service-chip" data-value="Desenvolvimento">Desenvolvimento</button>
+              <button type="button" class="chip service-chip" data-value="Design">Design</button>
+              <button type="button" class="chip service-chip" data-value="Marketing">Marketing</button>
+              <button type="button" class="chip service-chip" data-value="Outro">Outro</button>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="contato-descricao">Descrição do Projeto</label>
+            <textarea id="contato-descricao" rows="6" placeholder="Informe detalhes do seu projeto, prazo desejado, referências..." required></textarea>
+          </div>
+          <div class="form-actions-row">
+            <button type="button" id="btn-limpar" class="btn btn-outline-dark btn-lg">Limpar</button>
+            <button type="submit" class="btn btn-primary btn-lg">Enviar Orçamento →</button>
+          </div>
+          <p class="form-note text-muted">Responderemos em até 24 horas pelo e-mail informado no formulário.</p>
+        </form>
+        <div class="contact-info-grid">
+          <div class="contact-info-card">
+            <div class="contact-info-icon" style="background:#dcfce7;color:#22c55e"><i class="fa-brands fa-whatsapp"></i></div>
+            <div><h4>WhatsApp</h4><p>+55 11 9999-9999</p><span class="text-muted">Atendimento rápido</span></div>
+          </div>
+          <div class="contact-info-card">
+            <div class="contact-info-icon" style="background:#dbeafe;color:#2563eb"><i class="fa-solid fa-envelope"></i></div>
+            <div><h4>E-mail</h4><p>suporte@dev4all.com</p><span class="text-muted">Resposta em 24h</span></div>
+          </div>
+          <div class="contact-info-card">
+            <div class="contact-info-icon" style="background:#ede9fe;color:#8b5cf6"><i class="fa-solid fa-location-dot"></i></div>
+            <div><h4>Localização</h4><p>São Paulo, SP</p><span class="text-muted">Brasil</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a href="/" class="nav-logo footer-logo"><span>Dev4all</span></a>
+        <p>Criamos experiências digitais<br>que transformam negócios.</p>
+        <div class="footer-socials">
+          <a href="#" class="social-btn" style="background:#2563eb"></a>
+          <a href="#" class="social-btn" style="background:#22c55e"></a>
+          <a href="#" class="social-btn" style="background:#8b5cf6"></a>
+          <a href="#" class="social-btn" style="background:#ef4444"></a>
+        </div>
+      </div>
+      <div class="footer-col"><h4>Serviços</h4><ul>
+        <li><a href="/contato.html">Sites Profissionais</a></li>
+        <li><a href="/contato.html">Apps Mobile</a></li>
+        <li><a href="/contato.html">Sistemas Web</a></li>
+        <li><a href="/contato.html">Consultoria</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Empresa</h4><ul>
+        <li><a href="/sobre.html">Sobre nós</a></li>
+        <li><a href="/portfolio.html">Portfólio</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Carreiras</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Suporte</h4><ul>
+        <li><a href="#">Central de ajuda</a></li>
+        <li><a href="#">WhatsApp</a></li>
+        <li><a href="#">E-mail</a></li>
+        <li><a href="#">FAQ</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Legal</h4><ul>
+        <li><a href="#">Privacidade</a></li>
+        <li><a href="#">Termos de uso</a></li>
+        <li><a href="#">Cookies</a></li>
+        <li><a href="#">LGPD</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Dev4all. Todos os direitos reservados. Feito com cuidado pela equipe Dev4all</p>
+    </div>
+  </footer>
+
+  <script type="module" src="/js/contato.js"></script>
+  <script>
+    window.addEventListener('scroll', () => document.getElementById('navbar')?.classList.toggle('scrolled', window.scrollY > 60));
+    document.getElementById('menu-toggle')?.addEventListener('click', () => document.getElementById('nav-menu')?.classList.toggle('open'));
+    try { if (localStorage.getItem('token')) { document.getElementById('nav-login').style.display='none'; document.getElementById('nav-painel').style.display='block'; } } catch {}
+  </script>
+</body>
+</html>

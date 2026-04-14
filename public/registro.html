@@ -1,145 +1,63 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Criar Conta — Dev4all</title>
-  <link rel="stylesheet" href="/css/global.css" />
-  <link rel="stylesheet" href="/css/components.css" />
-  <link rel="stylesheet" href="/css/auth.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/global.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/auth.css">
 </head>
-<body>
+<body class="auth-body">
+  <a href="/" class="auth-logo"><span>Dev4all</span></a>
+  <div class="auth-circle auth-circle-1"></div>
+  <div class="auth-circle auth-circle-2"></div>
 
-  <!-- ── NAVBAR ─────────────────────────────────────────────────────── -->
-  <nav class="navbar" id="navbar">
-    <div class="navbar__inner">
-      <a href="/" class="navbar__logo">
-        <div class="navbar__logo-icon">D4</div>
-        Dev<span>4all</span>
-      </a>
-      <ul class="navbar__links">
-        <li><a href="/">Home</a></li>
-        <li><a href="/#nossos-trabalhos">Portfolio</a></li>
-        <li><a href="/#sobre-o-projeto">Sobre nós</a></li>
-        <li><a href="/orcamento.html">Contate-nos</a></li>
-      </ul>
-      <div class="navbar__actions">
-        <a href="/login.html"    class="btn btn-outline btn-sm">Já tenho conta</a>
-        <a href="#form"          class="btn btn-primary btn-sm">Cadastrar</a>
+  <div class="auth-wrapper">
+    <div class="auth-card">
+      <h1>Crie sua conta</h1>
+      <p class="auth-subtitle">Comece a usar a Dev4all hoje</p>
+
+      <div class="tab-switcher">
+        <a href="/login.html" class="tab-btn">Login</a>
+        <a href="/registro.html" class="tab-btn active">Registrar-se</a>
       </div>
-    </div>
-  </nav>
 
-  <!-- ── SEÇÃO DO FORMULÁRIO ──────────────────────────────────────── -->
-  <section class="auth-form-section auth-form-section--full" id="form">
-    <div class="container">
-      <div class="auth-two-col">
-
-        <!-- Coluna esquerda: informações -->
-        <div class="auth-info">
-          <div class="auth-info__tag">Cadastro gratuito</div>
-          <h2>Crie sua<br>conta agora</h2>
-          <p>Registre-se para solicitar orçamentos, acompanhar o andamento dos seus projetos e muito mais.</p>
-          <ul class="auth-info__list">
-            <li>
-              <span class="auth-info__icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-              </span>
-              Cadastro em menos de 1 minuto
-            </li>
-            <li>
-              <span class="auth-info__icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-              </span>
-              Seus dados protegidos com JWT
-            </li>
-            <li>
-              <span class="auth-info__icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
-              </span>
-              Orçamentos personalizados
-            </li>
-            <li>
-              <span class="auth-info__icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
-              </span>
-              Acompanhe tudo pelo painel
-            </li>
+      <form id="form-registro">
+        <div class="form-group">
+          <label for="reg-nome">Nome Completo</label>
+          <input type="text" id="reg-nome" placeholder="Digite seu nome completo" required autocomplete="name">
+        </div>
+        <div class="form-group">
+          <label for="reg-email">E-mail</label>
+          <input type="email" id="reg-email" placeholder="seu@email.com" required autocomplete="email">
+        </div>
+        <div class="form-group">
+          <label for="reg-senha">Senha</label>
+          <input type="password" id="reg-senha" placeholder="Mínimo 8 caracteres" required autocomplete="new-password">
+          <div class="pwd-strength-bar"><div id="pwd-bar"></div></div>
+          <ul class="pwd-checklist" id="pwd-checklist">
+            <li id="chk-len"><i class="fa-solid fa-circle-xmark"></i> Mínimo 8 caracteres</li>
+            <li id="chk-upper"><i class="fa-solid fa-circle-xmark"></i> Uma letra maiúscula</li>
+            <li id="chk-number"><i class="fa-solid fa-circle-xmark"></i> Um número</li>
           </ul>
-          <p class="auth-info__link">
-            Já tem conta? <a href="/login.html">Fazer login &rarr;</a>
-          </p>
         </div>
-
-        <!-- Coluna direita: formulário -->
-        <div class="auth-form-card">
-          <!-- Botão "Já tenho uma conta" no topo (conforme Figma frame 30:1136) -->
-          <div style="margin-bottom:var(--space-6)">
-            <a href="/login.html" class="btn btn-outline btn-block">Já tenho uma conta</a>
-          </div>
-
-          <h3>Criar conta grátis</h3>
-          <div class="alert" id="alert"></div>
-
-          <form id="registerForm" novalidate>
-            <div class="form-group">
-              <label class="form-label" for="nomeCompleto">Nome completo</label>
-              <input class="form-control" type="text" id="nomeCompleto" placeholder="Seu nome completo" autocomplete="name" required />
-              <span class="form-error" id="nomeCompletoError"></span>
-            </div>
-
-            <div class="form-group">
-              <label class="form-label" for="email">E-mail</label>
-              <input class="form-control" type="email" id="email" placeholder="seu@email.com" autocomplete="email" required />
-              <span class="form-error" id="emailError"></span>
-            </div>
-
-            <div class="form-group">
-              <label class="form-label" for="senha">Senha</label>
-              <div class="input-with-icon">
-                <input class="form-control" type="password" id="senha" placeholder="Mínimo 8 caracteres" autocomplete="new-password" required />
-                <button type="button" class="input-eye" id="toggleSenha" aria-label="Ver senha">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-                </button>
-              </div>
-              <div class="password-strength">
-                <div class="password-strength__bar"><div class="password-strength__fill" id="strengthFill"></div></div>
-                <span class="password-strength__label" id="strengthLabel"></span>
-              </div>
-              <span class="form-error" id="senhaError"></span>
-            </div>
-
-            <div class="form-group">
-              <label class="form-label" for="confirmarSenha">Confirmar senha</label>
-              <input class="form-control" type="password" id="confirmarSenha" placeholder="Repita a senha" autocomplete="new-password" required />
-              <span class="form-error" id="confirmarSenhaError"></span>
-            </div>
-
-            <div class="form-group">
-              <label class="form-check">
-                <input type="checkbox" id="termos" required />
-                <span>Aceito os <a href="#" style="color:var(--accent)">Termos de Uso</a> e <a href="#" style="color:var(--accent)">Política de Privacidade</a></span>
-              </label>
-              <span class="form-error" id="termosError"></span>
-            </div>
-
-            <div class="auth-form-actions">
-              <a href="/login.html" class="btn btn-outline btn-block">Já tenho conta</a>
-              <button type="submit" class="btn btn-primary btn-block" id="submitBtn">Registrar</button>
-            </div>
-          </form>
+        <div class="form-group">
+          <label for="reg-confirmar">Confirmar Senha</label>
+          <input type="password" id="reg-confirmar" placeholder="Repita sua senha" required autocomplete="new-password">
+          <p id="pwd-match-msg" class="pwd-match-msg" style="display:none"></p>
         </div>
-
-      </div>
+        <button type="submit" class="btn btn-primary btn-block btn-lg">Criar conta →</button>
+        <p class="auth-footer-link">
+          Já tem conta? <a href="/login.html" class="form-link">Entrar</a>
+        </p>
+      </form>
     </div>
-  </section>
+    <p class="auth-copyright">© 2026 Dev4all. Todos os direitos reservados.</p>
+  </div>
 
-  <!-- FOOTER mínimo -->
-  <footer style="background:var(--gray-900);color:var(--gray-500);padding:var(--space-8) 0;text-align:center;font-size:var(--font-sm)">
-    <div class="footer__logo" style="margin-bottom:var(--space-2)">Dev<span style="color:var(--accent)">4all</span></div>
-    &copy; 2026 Dev4all. Todos os direitos reservados.
-  </footer>
-
-  <script type="module" src="/js/auth.js"></script>
+  <script type="module" src="/js/registro.js"></script>
 </body>
 </html>
