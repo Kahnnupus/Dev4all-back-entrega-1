@@ -375,3 +375,19 @@
     padding: 1.25rem 1.25rem 0;
   }
 }
+
+@media (max-width: 375px) {
+  .auth-card {
+    padding: 1.5rem 1rem;
+  }
+  .auth-card h1 {
+    font-size: 1.375rem;
+  }
+  .tab-switcher {
+    font-size: 0.82rem;
+  }
+  .tab-btn {
+    padding: 0.5rem 0.625rem;
+    font-size: 0.82rem;
+  }
+}

@@ -19,6 +19,9 @@
         <span>Dev4all</span>
       </a>
       <span id="admin-badge" class="admin-badge" style="display:none">Admin</span>
+      <button id="sidebar-close" class="sidebar-close-btn" aria-label="Fechar menu">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
     </div>
 
     <div class="sidebar-profile">
@@ -59,9 +62,13 @@
       <button id="btn-logout" class="sidebar-logout">Sair</button>
     </div>
   </aside>
+  <div id="sidebar-overlay" class="sidebar-overlay"></div>
 
   <!-- MAIN -->
   <main class="dashboard-main">
+    <button id="sidebar-toggle" class="sidebar-toggle-btn" aria-label="Abrir menu">
+      <i class="fa-solid fa-bars"></i>
+    </button>
 
     <!-- USER: MEUS ORÇAMENTOS -->
     <div id="tab-meus-orcamentos" class="dashboard-tab">
@@ -204,8 +211,25 @@
         document.querySelectorAll('.dashboard-tab').forEach(t => t.style.display = 'none');
         const el = document.getElementById('tab-' + link.dataset.tab);
         if (el) el.style.display = 'block';
+        // Fecha sidebar mobile ao navegar
+        document.querySelector('.sidebar')?.classList.remove('mobile-open');
       });
     });
+
+    // Mobile sidebar toggle
+    const _sidebar = document.querySelector('.sidebar');
+    const _overlay = document.getElementById('sidebar-overlay');
+    function _openSidebar() {
+      _sidebar?.classList.add('mobile-open');
+      if (_overlay) _overlay.style.display = 'block';
+    }
+    function _closeSidebar() {
+      _sidebar?.classList.remove('mobile-open');
+      if (_overlay) _overlay.style.display = 'none';
+    }
+    document.getElementById('sidebar-toggle')?.addEventListener('click', _openSidebar);
+    document.getElementById('sidebar-close')?.addEventListener('click', _closeSidebar);
+    _overlay?.addEventListener('click', _closeSidebar);
   </script>
 </body>
 </html>

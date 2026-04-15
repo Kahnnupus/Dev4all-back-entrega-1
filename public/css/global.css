@@ -478,3 +478,12 @@ hr {
   .section { padding: 2.5rem 0; }
   h1 { font-size: 1.75rem; }
 }
+
+@media (max-width: 360px) {
+  .container,
+  .container-sm {
+    padding-left: 0.875rem;
+    padding-right: 0.875rem;
+  }
+  html { font-size: 14px; }
+}
