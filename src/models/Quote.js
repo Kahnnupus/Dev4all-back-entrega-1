@@ -47,6 +47,13 @@ const quoteSchema = new mongoose.Schema(
       default: 'pendente',
     },
 
+    codigoRastreio: {
+      type: String,
+      unique: true,
+      sparse: true,
+      index: true,
+    },
+
     usuario: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User',

@@ -15,9 +15,11 @@ document.getElementById('menu-toggle')?.addEventListener('click', () => {
 function initNav() {
   const loginBtn = document.getElementById('nav-login');
   const painelBtn = document.getElementById('nav-painel');
+  const verificarBtn = document.getElementById('btn-verificar-orcamento');
   if (isLoggedIn()) {
     if (loginBtn) loginBtn.style.display = 'none';
     if (painelBtn) { painelBtn.style.display = 'block'; painelBtn.textContent = isAdmin() ? 'Painel Admin' : 'Meu Painel'; }
+    if (verificarBtn) verificarBtn.style.display = 'none';
   }
 }
 

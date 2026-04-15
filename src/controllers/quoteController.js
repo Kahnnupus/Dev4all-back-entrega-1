@@ -5,8 +5,16 @@ import { catchAsync } from '../middlewares/errorHandler.js';
 export const createQuote = catchAsync(async (req, res) => {
   const quoteData = { ...req.body };
 
-
   if (req.user) quoteData.usuario = req.user._id;
+
+  // Gera código de rastreio único de 6 dígitos
+  let codigo;
+  let tentativas = 0;
+  do {
+    codigo = String(Math.floor(100000 + Math.random() * 900000));
+    tentativas++;
+  } while ((await Quote.exists({ codigoRastreio: codigo })) && tentativas < 10);
+  quoteData.codigoRastreio = codigo;
 
   const quote = await Quote.create(quoteData);
 
@@ -14,6 +22,27 @@ export const createQuote = catchAsync(async (req, res) => {
     success: true,
     message: 'Orçamento enviado com sucesso! Nossa equipe entrará em contato em breve.',
     data: quote,
+    codigoRastreio: quote.codigoRastreio,
+  });
+});
+
+export const getQuoteByCode = catchAsync(async (req, res) => {
+  const quote = await Quote.findOne({ codigoRastreio: req.params.codigo });
+  if (!quote) {
+    return res.status(404).json({ success: false, message: 'Código não encontrado.' });
+  }
+  res.json({
+    success: true,
+    data: {
+      nomeCompleto: quote.nomeCompleto,
+      email: quote.email,
+      telefone: quote.telefone,
+      tipoServico: quote.tipoServico,
+      descricao: quote.descricao,
+      status: quote.status,
+      createdAt: quote.createdAt,
+      codigoRastreio: quote.codigoRastreio,
+    },
   });
 });
 

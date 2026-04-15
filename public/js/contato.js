@@ -73,8 +73,9 @@ document.getElementById('form-contato')?.addEventListener('submit', async e => {
   try {
     const res = await quotesApi.submit({ nomeCompleto, email, telefone, tipoServico, descricao });
     const id = res.data?._id || Date.now();
-    const proto = 'DEV2026-' + String(id).slice(-4).padStart(4, '0');
-    window.location.href = `/confirmacao.html?protocolo=${proto}`;
+    const proto = 'DEV' + new Date().getFullYear() + '-' + String(id).slice(-4).toUpperCase();
+    const codigo = res.codigoRastreio || res.data?.codigoRastreio || '';
+    window.location.href = `/confirmacao.html?protocolo=${proto}&codigo=${codigo}`;
   } catch(err) {
     showAlert(err.message || 'Erro ao enviar orçamento. Tente novamente.');
   } finally { setLoading(btn, false); }

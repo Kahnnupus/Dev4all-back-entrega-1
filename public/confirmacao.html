@@ -6,6 +6,7 @@
   <title>Orçamento Enviado — Dev4all</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="/css/global.css">
   <link rel="stylesheet" href="/css/components.css">
   <link rel="stylesheet" href="/css/auth.css">
@@ -18,26 +19,76 @@
   <div class="auth-circle auth-circle-2"></div>
 
   <div class="auth-wrapper">
-    <div class="auth-card" style="text-align:center">
+    <div class="auth-card" style="text-align:center;max-width:520px">
       <div class="success-icon">
         <div class="success-circle"><i class="fa-solid fa-check"></i></div>
       </div>
       <h1>Orçamento enviado<br>com sucesso!</h1>
       <p class="auth-subtitle">Responderemos em até 24 horas pelo<br>e-mail informado no formulário.</p>
-      <p style="margin:1.5rem 0 0.5rem;color:var(--text-mid);font-size:14px">Número do protocolo:</p>
-      <p id="protocolo" style="font-size:1.25rem;font-weight:700;color:var(--blue-primary)">#DEV2026-0000</p>
-      <div style="display:flex;gap:1rem;margin-top:2rem;justify-content:center">
+
+      <!-- Código de rastreio -->
+      <div style="background:#f0f4ff;border:2px dashed #2563eb;border-radius:12px;padding:1.25rem;margin:1.5rem 0">
+        <p style="font-size:.75rem;color:#6b7280;margin-bottom:.35rem;text-transform:uppercase;letter-spacing:.07em">Código de Rastreio</p>
+        <p id="codigo-rastreio" style="font-size:2rem;font-weight:800;color:#2563eb;letter-spacing:.2em;margin:0">------</p>
+        <button id="btn-copiar" onclick="copiarCodigo()" style="margin-top:.65rem;background:none;border:1.5px solid #2563eb;color:#2563eb;border-radius:6px;padding:.3rem 1rem;cursor:pointer;font-size:.8rem;font-weight:600;transition:background .2s">
+          <i class="fa-regular fa-copy"></i> Copiar código
+        </button>
+      </div>
+
+      <!-- Orientação -->
+      <p style="font-size:.875rem;color:#4b5563;line-height:1.7;margin-bottom:1.75rem;text-align:left">
+        Para acompanhar seu orçamento, você pode
+        <a href="/login.html" style="color:#2563eb;font-weight:600">fazer login</a>
+        (ou <a href="/registro.html" style="color:#2563eb;font-weight:600">criar uma conta</a> com o e-mail usado no formulário) — ou use o código acima clicando em <strong>"Verificar Orçamento"</strong> no menu do site.
+      </p>
+
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
         <a href="/" class="btn btn-outline-dark btn-lg">← Voltar ao início</a>
         <a href="/contato.html" class="btn btn-primary btn-lg">Novo Orçamento</a>
       </div>
+
+      <p style="font-size:.75rem;color:#9ca3af;margin-top:1.5rem">Protocolo: <span id="protocolo">#DEV2026-0000</span></p>
     </div>
     <p class="auth-copyright">© 2026 Dev4all. Todos os direitos reservados.</p>
   </div>
 
   <script>
     const params = new URLSearchParams(window.location.search);
-    const proto = params.get('protocolo') || 'DEV2026-' + Math.floor(Math.random()*9000+1000);
+    const proto = params.get('protocolo') || 'DEV2026-' + Math.floor(Math.random() * 9000 + 1000);
+    const codigo = params.get('codigo') || '';
     document.getElementById('protocolo').textContent = '#' + proto;
+    if (codigo) document.getElementById('codigo-rastreio').textContent = codigo;
+
+    function copiarCodigo() {
+      if (!codigo) return;
+      const btn = document.getElementById('btn-copiar');
+
+      function onSucesso() {
+        btn.innerHTML = '<i class="fa-solid fa-check"></i> Copiado!';
+        btn.style.background = '#eff6ff';
+        setTimeout(() => {
+          btn.innerHTML = '<i class="fa-regular fa-copy"></i> Copiar código';
+          btn.style.background = 'none';
+        }, 2000);
+      }
+
+      function fallback() {
+        const ta = document.createElement('textarea');
+        ta.value = codigo;
+        ta.style.cssText = 'position:fixed;top:0;left:0;opacity:0;pointer-events:none';
+        document.body.appendChild(ta);
+        ta.focus();
+        ta.select();
+        try { document.execCommand('copy'); onSucesso(); } catch(e) {}
+        document.body.removeChild(ta);
+      }
+
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(codigo).then(onSucesso).catch(fallback);
+      } else {
+        fallback();
+      }
+    }
   </script>
 </body>
 </html>

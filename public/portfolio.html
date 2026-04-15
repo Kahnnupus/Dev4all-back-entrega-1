@@ -23,6 +23,7 @@
         <li><a href="/contato.html" class="nav-link">Contato</a></li>
       </ul>
       <div class="nav-actions">
+        <button id="btn-verificar-orcamento" class="btn btn-outline-dark" style="font-size:.85rem">Verificar Orçamento</button>
         <a id="nav-painel" href="/painel.html" class="btn btn-primary" style="display:none">Meu Painel</a>
         <a id="nav-login" href="/login.html" class="btn btn-primary">Login</a>
       </div>
@@ -107,7 +108,8 @@
   <script>
     window.addEventListener('scroll', () => document.getElementById('navbar')?.classList.toggle('scrolled', window.scrollY > 60));
     document.getElementById('menu-toggle')?.addEventListener('click', () => document.getElementById('nav-menu')?.classList.toggle('open'));
-    try { if (localStorage.getItem('token')) { document.getElementById('nav-login').style.display='none'; document.getElementById('nav-painel').style.display='block'; } } catch {}
+    try { if (localStorage.getItem('token')) { document.getElementById('nav-login').style.display='none'; document.getElementById('nav-painel').style.display='block'; document.getElementById('btn-verificar-orcamento').style.display='none'; } } catch {}
   </script>
+  <script src="/js/verificar-modal.js"></script>
 </body>
 </html>

@@ -37,6 +37,7 @@ export const quotesApi = {
   list: (params = {}) => { const q = new URLSearchParams(params).toString(); return request('/quotes' + (q ? '?' + q : '')); },
   myQuotes: () => request('/quotes/my'),
   get: (id) => request('/quotes/' + id),
+  track: (codigo) => request('/quotes/track/' + codigo),
   submit: (data) => request('/quotes', { method: 'POST', body: JSON.stringify(data) }),
   updateStatus: (id, status) => request('/quotes/' + id + '/status', { method: 'PATCH', body: JSON.stringify({ status }) }),
   delete: (id) => request('/quotes/' + id, { method: 'DELETE' }),
